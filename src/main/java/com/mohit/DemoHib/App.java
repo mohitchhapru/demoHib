@@ -18,10 +18,16 @@ public class App
 {
     public static void main( String[] args )
     {
+    	
+    	UserName name = new UserName();
+    	name.setFirstName("Mohit");
+    	name.setMiddleName("Dilip");
+    	name.setLastName("Chhapru");
+    	
     	User mohit = new User();
 		
 		mohit.setuNum(20); 
-		mohit.setName("Mohit"); 
+		mohit.setName(name); 
 		mohit.setAge(29);
 		
     	Configuration con = new Configuration().configure().addAnnotatedClass(User.class);
@@ -31,12 +37,11 @@ public class App
     	Session session = sf.openSession();
     	Transaction tx = session.beginTransaction();
     	
-    	//session.save(mohit);
+    	session.save(mohit);
     	
     	mohit = (User) session.get(User.class, 20);
     	    	
     	tx.commit();
-    	
-    	System.out.println(mohit.toString());
+    	    
     }
 }

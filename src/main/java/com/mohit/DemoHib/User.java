@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-@Entity(name = "User_Table") // the name parameter is used to specify name of the table
+
 /*
  * There are 3 layers 
  * Layer 1: Class Name 
@@ -14,25 +14,27 @@ import javax.persistence.Transient;
  * 
  *  Similar to @Entity, @Table(name ="User_Table") can be written
  * */
+
+@Entity// @Entity(name = "UserTable") the name parameter is used to specify name of the table
 public class User {
-	@Id
+	@Id // @Id annotation is used to specify Primary Key
 	private int uNum;
 	
-	@Column(name="UserName") /* @Column annotation is used to specify name of column in the table*/
-	private String name;
+	// @Column(name="UserName") annotation is used to specify name of column in the table
+	// @Transient annotation is used if we don't want to store a column in table
+	private UserName name;
 	private int age;
 	
-	//@Transient /*@Transient annotation is used if we don't want to store a column in table*/
 	public int getuNum() {
 		return uNum;
 	}
 	public void setuNum(int uNum) {
 		this.uNum = uNum;
 	}
-	public String getName() {
+	public UserName getName() {
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(UserName name) {
 		this.name = name;
 	}
 	public int getAge() {
@@ -41,7 +43,6 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
 	@Override
 	public String toString() {
 		return "User [uNum=" + uNum + ", name=" + name + ", age=" + age + "]";
